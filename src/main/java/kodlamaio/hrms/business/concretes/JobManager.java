@@ -21,7 +21,7 @@ public class JobManager implements JobService {
     @Override
     public DataResult<List<Job>> getAll() {
         return new SuccessDataResult<>
-                (jobDao.findAll(),"Data Listelendi");
+                (jobDao.findAll(),"Data listed");
     }
 
     @Override

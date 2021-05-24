@@ -26,7 +26,7 @@ public class JobSeekerManager implements JobSeekerService {
 
     @Override
     public DataResult<List<JobSeeker>> getAll() {
-        return new SuccessDataResult<>(jobSeekerDao.findAll(),"Data Listelendi");
+        return new SuccessDataResult<>(jobSeekerDao.findAll(),"Data listed");
     }
 
     @Override
@@ -44,7 +44,7 @@ public class JobSeekerManager implements JobSeekerService {
             return new ErrorResult("Email not verified");
         }
         this.jobSeekerDao.save(jobSeeker);
-        return new SuccessResult("Eklendi");
+        return new SuccessResult("Added");
     }
 
     @Override

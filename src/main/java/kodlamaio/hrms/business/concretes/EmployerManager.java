@@ -26,7 +26,7 @@ public class EmployerManager implements EmployerService {
     @Override
     public DataResult<List<Employer>> getAll() {
         return new SuccessDataResult<>
-                (this.employerDao.findAll(),"Data Listelendi");
+                (this.employerDao.findAll(),"Data listed");
     }
 
     @Override
@@ -38,7 +38,7 @@ public class EmployerManager implements EmployerService {
             return new ErrorResult("Email not verified");
         }
         this.employerDao.save(employer);
-        return new SuccessResult("Eklendi");
+        return new SuccessResult("Added");
     }
 
     @Override
