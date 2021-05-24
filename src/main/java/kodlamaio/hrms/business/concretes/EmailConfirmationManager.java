@@ -8,6 +8,6 @@ import org.springframework.stereotype.Service;
 public class EmailConfirmationManager implements ConfirmationService {
     @Override
     public boolean isConfirmed(User user) {
-        return false;
+        return true;
     }
 }
