@@ -13,12 +13,12 @@ import java.util.List;
 
 @Service
 public class JobSeekerManager implements JobSeekerService {
-    private JobSeekerDao jobSeekerDao;
-    private UserCheckService userCheckService;
-    private ConfirmationService confirmationService;
+    private final JobSeekerDao jobSeekerDao;
+    private final UserCheckService userCheckService;
+    private final ConfirmationService confirmationService;
 
     @Autowired
-    public JobSeekerManager(JobSeekerDao jobSeekerDao, UserCheckService userCheckService,ConfirmationService confirmationService){
+    public JobSeekerManager(JobSeekerDao jobSeekerDao,UserCheckService userCheckService, ConfirmationService confirmationService){
         this.jobSeekerDao=jobSeekerDao;
         this.userCheckService = userCheckService;
         this.confirmationService=confirmationService;

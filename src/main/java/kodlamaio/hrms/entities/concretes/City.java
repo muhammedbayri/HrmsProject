@@ -1,6 +1,7 @@
 package kodlamaio.hrms.entities.concretes;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,24 +9,22 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.List;
 
-@Entity
 @Data
-@Table(name = "employers")
 @AllArgsConstructor
 @NoArgsConstructor
-@PrimaryKeyJoinColumn(name = "id")
-public class Employer extends User{
+@Table(name = "cities")
+@Entity
+public class City {
 
-    @Column(name = "company_name")
-    private String companyName;
+    @Id
+    @Column(name = "cities_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
-    @Column(name = "web_address")
-    private String website;
-
-    @Column(name = "phone_number")
-    private String phone;
+    @Column(name = "city_name")
+    private String cityName;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "employer")
+    @OneToMany(mappedBy = "city")
     private List<JobPosting> jobPostings;
 }
