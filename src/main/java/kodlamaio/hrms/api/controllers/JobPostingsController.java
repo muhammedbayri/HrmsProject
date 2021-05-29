@@ -3,7 +3,6 @@ package kodlamaio.hrms.api.controllers;
 import kodlamaio.hrms.business.abstracts.JobPostingService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
-import kodlamaio.hrms.entities.concretes.Job;
 import kodlamaio.hrms.entities.concretes.JobPosting;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -30,5 +29,25 @@ public class JobPostingsController {
     @PostMapping("/add")
     public Result add(@RequestBody JobPosting jobPosting){
         return this.jobPostingService.add(jobPosting);
+    }
+
+    @GetMapping("/getAllByisActive")
+    DataResult<List<JobPosting>> getAllByisActive(){
+        return this.jobPostingService.getAllByisActive();
+    }
+
+    @GetMapping("/getByisActiveAndCompanyName")
+    DataResult<List<JobPosting>> getByisActiveAndCompanyName(@RequestParam String companyName){
+        return this.jobPostingService.getByisActiveAndCompanyName(companyName);
+    }
+
+    @GetMapping("/getAllDesc")
+    DataResult<List<JobPosting>> getAllSortedByApplicationDeadline(){
+        return this.jobPostingService.getAllSortedByApplicationDeadline();
+    }
+
+    @PostMapping("/updateIsActiveById")
+    public Result updateIsActiveById(@RequestParam int employerId,@RequestParam int id,@RequestParam boolean isActive){
+        return this.jobPostingService.updateIsActiveByEmployerIdAndId(employerId,id,isActive);
     }
 }

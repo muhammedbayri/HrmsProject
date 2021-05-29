@@ -14,6 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @Table(name = "cities")
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","JobAdvertisement"})
 public class City {
 
     @Id
