@@ -13,7 +13,7 @@ import java.util.List;
 @Service
 public class JobPostingManager implements JobPostingService {
 
-    private JobPostingDao jobPostingDao;
+    private final JobPostingDao jobPostingDao;
 
     @Autowired
     public JobPostingManager(JobPostingDao jobPostingDao){
@@ -54,12 +54,7 @@ public class JobPostingManager implements JobPostingService {
         return new SuccessDataResult<>
                 (this.jobPostingDao.getByisActive(true));
     }
-
-    @Override
-    public DataResult<JobPosting> getByEmployerIdAndId(int employerId,int id) {
-        return new SuccessDataResult<>
-                (this.jobPostingDao.getByEmployer_IdAndId(employerId,id));
-    }
+    
 
     @Override
     public DataResult<List<JobPosting>> getByisActiveAndCompanyName(String companyName) {

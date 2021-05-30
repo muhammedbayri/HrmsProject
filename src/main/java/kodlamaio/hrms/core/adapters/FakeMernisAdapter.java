@@ -7,9 +7,6 @@ import org.springframework.stereotype.Service;
 public class FakeMernisAdapter implements UserCheckService{
     @Override
     public boolean checkIsRealPerson(JobSeeker jobSeeker) {
-        if (jobSeeker.getNationalIdentity().length()!=11){
-            return false;
-        }
-        return true;
+        return jobSeeker.getNationalIdentity().length() == 11;
     }
 }

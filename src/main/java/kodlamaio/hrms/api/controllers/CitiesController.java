@@ -13,7 +13,7 @@ import java.util.List;
 @RequestMapping("/api/cities")
 public class CitiesController {
 
-    private CityService cityService;
+    private final CityService cityService;
 
     @Autowired
     public CitiesController(CityService cityService){

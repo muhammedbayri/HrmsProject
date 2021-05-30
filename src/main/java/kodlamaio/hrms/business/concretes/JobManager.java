@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 public class JobManager implements JobService {
-    private JobDao jobDao;
+    private final JobDao jobDao;
 
     @Autowired
     public JobManager(JobDao jobDao){

@@ -14,8 +14,8 @@ import java.util.List;
 @Service
 public class EmployerManager implements EmployerService {
 
-    private EmployerDao employerDao;
-    private ConfirmationService confirmationService;
+    private final EmployerDao employerDao;
+    private final ConfirmationService confirmationService;
 
     @Autowired
     public EmployerManager(EmployerDao employerDao,ConfirmationService confirmationService){
