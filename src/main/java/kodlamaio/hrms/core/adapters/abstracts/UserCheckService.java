@@ -1,4 +1,4 @@
-package kodlamaio.hrms.core.adapters;
+package kodlamaio.hrms.core.adapters.abstracts;
 
 import kodlamaio.hrms.entities.concretes.JobSeeker;
 

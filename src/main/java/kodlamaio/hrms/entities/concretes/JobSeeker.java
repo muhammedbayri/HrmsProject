@@ -1,11 +1,13 @@
 package kodlamaio.hrms.entities.concretes;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.List;
 
 
 @Entity
@@ -14,6 +16,7 @@ import java.sql.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @PrimaryKeyJoinColumn(name = "id")
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","curriculaVitaes"})
 public class JobSeeker extends User{
 
     @Column(name = "first_name")
@@ -27,4 +30,7 @@ public class JobSeeker extends User{
 
     @Column(name = "date_of_birth")
     private Date birthDate;
+
+    @OneToMany(mappedBy = "jobSeeker")
+    private List<CurriculaVitae> curriculaVitaes;
 }

@@ -1,0 +1,21 @@
+package kodlamaio.hrms.dataAccess.abstracts;
+
+import kodlamaio.hrms.entities.concretes.CurriculaVitae;
+import kodlamaio.hrms.entities.dtos.CurriculaVitaeDto;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import java.util.List;
+
+
+public interface CurriculaVitaeDao extends JpaRepository<CurriculaVitae,Integer> {
+
+    @Query("select new kodlamaio.hrms.entities.dtos.CurriculaVitaeDto" +
+            "(cv.id,cv.coverLetter,js.firstName,js.lastName,js.nationalIdentity,sm.githubUsername,sm.linkedinUsername," +
+            "tcn.technologyName,ji.imageUrl,je.companyName,edu.school.schoolName,jl.language.languageName)" +
+            "from CurriculaVitae cv inner join cv.jobSeeker js inner join cv.educations edu inner join cv.jobExperiences je " +
+            "inner join cv.jobSeekerLanguages jl inner join cv.socialMedia sm inner join cv.jobSeekerImage ji " +
+            "inner join cv.jobSeekerTechnology tcn")
+    List<CurriculaVitaeDto> getAllByCv();
+}
+//cv.id,cv.coverLetter,js,sm,ji.imageUrl,je.companyName,edu.school.schoolName,jl.language
