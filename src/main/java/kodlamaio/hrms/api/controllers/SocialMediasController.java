@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/socialMedias")
+@CrossOrigin
 public class SocialMediasController {
 
     private final SocialMediaService socialMediaService;
@@ -20,9 +21,14 @@ public class SocialMediasController {
         this.socialMediaService = socialMediaService;
     }
 
-    @GetMapping("/getall")
+    @GetMapping("/getAll")
     private DataResult<List<SocialMedia>> getAll(){
         return this.socialMediaService.getAll();
+    }
+
+    @GetMapping("/getByCurriculaVitaeId")
+    public DataResult<SocialMedia> getByCurriculaVitaeId(int id){
+        return this.socialMediaService.getByCurriculaVitaeId(id);
     }
 
     @PostMapping("/add")

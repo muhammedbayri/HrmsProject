@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/curriculaVitaes")
+@CrossOrigin
 public class CurriculaVitaesController {
 
     private final CurriculaVitaeService curriculaVitaeService;
@@ -21,9 +22,14 @@ public class CurriculaVitaesController {
         this.curriculaVitaeService = curriculaVitaeService;
     }
 
-    @GetMapping("/getall")
+    @GetMapping("/getAll")
     public DataResult<List<CurriculaVitae>> getAll(){
         return this.curriculaVitaeService.getAll();
+    }
+
+    @GetMapping("/getById")
+    public DataResult<CurriculaVitae> getById(@RequestParam int id){
+        return this.curriculaVitaeService.getById(id);
     }
 
     @PostMapping("/add")
@@ -31,8 +37,13 @@ public class CurriculaVitaesController {
         return this.curriculaVitaeService.add(curriculaVitae);
     }
 
-    @GetMapping("/getallByCv")
-    public DataResult<List<CurriculaVitaeDto>> getAllByCv(){
-        return this.curriculaVitaeService.getAllByCv();
+    @PostMapping("/update")
+    public Result update(@RequestParam int id,@RequestParam String coverLetter,@RequestParam String githubUsername,@RequestParam String linkedinUsername,@RequestParam String technologyName){
+        return this.curriculaVitaeService.update(id,coverLetter,githubUsername,linkedinUsername,technologyName);
+    }
+
+    @GetMapping("/getAllDto")
+    public DataResult<List<CurriculaVitaeDto>> getAllDto(){
+        return this.curriculaVitaeService.getAllDto();
     }
 }

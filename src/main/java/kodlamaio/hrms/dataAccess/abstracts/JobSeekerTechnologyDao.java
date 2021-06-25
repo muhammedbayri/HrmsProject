@@ -4,4 +4,5 @@ import kodlamaio.hrms.entities.concretes.JobSeekerTechnology;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface JobSeekerTechnologyDao extends JpaRepository<JobSeekerTechnology,Integer> {
+    JobSeekerTechnology getById(int id);
 }

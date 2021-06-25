@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/cities")
+@CrossOrigin
 public class CitiesController {
 
     private final CityService cityService;
@@ -21,7 +22,7 @@ public class CitiesController {
         this.cityService=cityService;
     }
 
-    @GetMapping("/getall")
+    @GetMapping("/getAll")
     public DataResult<List<City>> getAll(){
         return this.cityService.getAll();
     }

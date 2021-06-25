@@ -8,5 +8,6 @@ import java.util.List;
 
 public interface SocialMediaService {
     DataResult<List<SocialMedia>> getAll();
+    DataResult<SocialMedia> getByCurriculaVitaeId(int id);
     Result add(SocialMedia socialMedia);
 }

@@ -9,5 +9,7 @@ import java.util.List;
 
 public interface JobSeekerLanguageService {
     DataResult<List<JobSeekerLanguage>> getAll();
+    DataResult<JobSeekerLanguage> getByCurriculaVitaeId(int id);
     Result add(JobSeekerLanguage jobSeekerLanguage);
+    Result update(int curriculaVitaeId,int languageDegree,int languageId);
 }

@@ -29,6 +29,12 @@ public class SocialMediaManager implements SocialMediaService {
     }
 
     @Override
+    public DataResult<SocialMedia> getByCurriculaVitaeId(int id) {
+        return new SuccessDataResult<>
+                (this.socialMediaDao.getByCurriculaVitaes_Id(id));
+    }
+
+    @Override
     public Result add(SocialMedia socialMedia) {
         this.socialMediaDao.save(socialMedia);
         return new SuccessResult("Added");

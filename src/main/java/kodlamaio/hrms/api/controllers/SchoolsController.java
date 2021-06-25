@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/schools")
+@CrossOrigin
 public class SchoolsController {
 
     private final SchoolService schoolService;
@@ -20,7 +21,7 @@ public class SchoolsController {
         this.schoolService = schoolService;
     }
 
-    @GetMapping("/getall")
+    @GetMapping("/getAll")
     public DataResult<List<School>> getAll(){
         return this.schoolService.getAll();
     }

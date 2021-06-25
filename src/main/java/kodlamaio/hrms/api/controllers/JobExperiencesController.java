@@ -5,12 +5,15 @@ import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.entities.concretes.JobExperience;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/jopExperiences")
+@CrossOrigin
 public class JobExperiencesController {
 
     private final JobExperienceService jobExperienceService;
@@ -20,7 +23,7 @@ public class JobExperiencesController {
         this.jobExperienceService = jobExperienceService;
     }
 
-    @GetMapping("/getall")
+    @GetMapping("/getAll")
     public DataResult<List<JobExperience>> getAll(){
         return this.jobExperienceService.getAll();
     }
@@ -28,6 +31,11 @@ public class JobExperiencesController {
     @PostMapping("/add")
     public Result add(@RequestBody JobExperience jobExperience){
         return this.jobExperienceService.add(jobExperience);
+    }
+
+    @PostMapping("/update")
+    public Result update(@RequestParam int curriculaVitaeId, @RequestParam String companyName, @RequestParam String positionName, @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,  @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate){
+        return this.jobExperienceService.update(curriculaVitaeId,companyName,positionName,startDate,endDate);
     }
 
     @GetMapping("/getallBySorted")

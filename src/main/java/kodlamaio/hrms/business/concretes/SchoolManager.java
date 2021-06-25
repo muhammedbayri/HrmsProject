@@ -32,4 +32,10 @@ public class SchoolManager implements SchoolService {
         this.schoolDao.save(school);
         return new SuccessResult("Added");
     }
+
+    @Override
+    public DataResult<School> getById(int id) {
+        return new SuccessDataResult<>
+                (this.schoolDao.getById(id));
+    }
 }

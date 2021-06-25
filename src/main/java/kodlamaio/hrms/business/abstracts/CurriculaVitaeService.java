@@ -10,6 +10,8 @@ import java.util.List;
 
 public interface CurriculaVitaeService {
     DataResult<List<CurriculaVitae>> getAll();
+    DataResult<CurriculaVitae> getById(int id);
     Result add(CurriculaVitae curriculaVitae);
-    DataResult<List<CurriculaVitaeDto>> getAllByCv();
+    Result update(int id,String coverLetter,String githubUsername, String linkedinUsername,String technologyName);
+    DataResult<List<CurriculaVitaeDto>> getAllDto();
 }

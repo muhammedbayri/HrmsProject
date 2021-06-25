@@ -10,4 +10,5 @@ import java.util.List;
 public interface SchoolDepartmentService {
     DataResult<List<SchoolDepartment>> getAll();
     Result add(SchoolDepartment schoolDepartment);
+    DataResult<SchoolDepartment> getById(int id);
 }

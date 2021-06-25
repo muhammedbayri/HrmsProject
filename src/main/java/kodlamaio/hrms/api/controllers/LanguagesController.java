@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/languages")
+@CrossOrigin
 public class LanguagesController {
 
     private final LanguageService languageService;
@@ -20,7 +21,7 @@ public class LanguagesController {
         this.languageService = languageService;
     }
 
-    @GetMapping("/getall")
+    @GetMapping("/getAll")
     public DataResult<List<Language>> getAll(){
         return this.languageService.getAll();
     }

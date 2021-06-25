@@ -29,6 +29,12 @@ public class JobSeekerTechnologyManager implements JobSeekerTechnologyService {
     }
 
     @Override
+    public DataResult<JobSeekerTechnology> getById(int id) {
+        return new SuccessDataResult<>
+                (this.jobSeekerTechnologyDao.getById(id));
+    }
+
+    @Override
     public Result add(JobSeekerTechnology jobSeekerTechnology) {
         this.jobSeekerTechnologyDao.save(jobSeekerTechnology);
         return new SuccessResult("Added");

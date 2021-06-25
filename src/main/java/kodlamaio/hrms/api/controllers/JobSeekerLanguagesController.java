@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/jobSeekersLanguage")
+@CrossOrigin
 public class JobSeekerLanguagesController {
 
     private final JobSeekerLanguageService jobSeekerLanguageService;
@@ -20,7 +21,7 @@ public class JobSeekerLanguagesController {
         this.jobSeekerLanguageService = jobSeekerLanguageService;
     }
 
-    @GetMapping("/getall")
+    @GetMapping("/getAll")
     public DataResult<List<JobSeekerLanguage>> getAll(){
         return this.jobSeekerLanguageService.getAll();
     }
@@ -28,5 +29,10 @@ public class JobSeekerLanguagesController {
     @PostMapping("/add")
     public Result add(@RequestBody JobSeekerLanguage jobSeekerLanguage){
         return this.jobSeekerLanguageService.add(jobSeekerLanguage);
+    }
+
+    @PostMapping("/update")
+    public Result update(@RequestParam int curriculaVitaeId,@RequestParam int languageDegree,@RequestParam int languageId){
+        return this.jobSeekerLanguageService.update(curriculaVitaeId,languageDegree,languageId);
     }
 }

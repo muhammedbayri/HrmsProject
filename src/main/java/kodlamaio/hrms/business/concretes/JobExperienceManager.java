@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 @Service
 public class JobExperienceManager implements JobExperienceService {
@@ -29,9 +30,26 @@ public class JobExperienceManager implements JobExperienceService {
     }
 
     @Override
+    public DataResult<JobExperience> getByCurriculaVitae(int id) {
+        return new SuccessDataResult<>
+                (this.jobExperienceDao.getByCurriculaVitae_Id(id));
+    }
+
+    @Override
     public Result add(JobExperience jobExperience) {
         this.jobExperienceDao.save(jobExperience);
         return new SuccessResult("Added");
+    }
+
+    @Override
+    public Result update(int curriculaVitaeId, String companyName, String positionName, LocalDate startDate, LocalDate endDate) {
+        JobExperience jobExperience=jobExperienceDao.getByCurriculaVitae_Id(curriculaVitaeId);
+        jobExperience.setCompanyName(companyName);
+        jobExperience.setPositionName(positionName);
+        jobExperience.setStartDate(startDate);
+        jobExperience.setEndDate(endDate);
+        jobExperienceDao.save(jobExperience);
+        return new SuccessResult("Updated");
     }
 
     @Override

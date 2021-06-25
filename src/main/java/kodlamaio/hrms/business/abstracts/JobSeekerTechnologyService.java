@@ -8,5 +8,6 @@ import java.util.List;
 
 public interface JobSeekerTechnologyService {
     DataResult<List<JobSeekerTechnology>> getAll();
+    DataResult<JobSeekerTechnology> getById(int id);
     Result add(JobSeekerTechnology jobSeekerTechnology);
 }
