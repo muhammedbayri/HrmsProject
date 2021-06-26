@@ -25,9 +25,19 @@ public class EmployersController {
         return this.employerService.getAll();
     }
 
+    @GetMapping("/getById")
+    public DataResult<Employer> getById(int id){
+        return this.employerService.getById(id);
+    }
+
     @PostMapping ("/add")
     public Result add(@RequestBody Employer employer){
 
         return this.employerService.add(employer);
+    }
+
+    @PostMapping ("/update")
+    public Result update(@RequestParam int id,@RequestParam String companyName,@RequestParam String website,@RequestParam String phone){
+        return this.employerService.update(id,companyName,website,phone);
     }
 }

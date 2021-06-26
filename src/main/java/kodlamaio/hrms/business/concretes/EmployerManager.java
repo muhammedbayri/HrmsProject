@@ -30,6 +30,12 @@ public class EmployerManager implements EmployerService {
     }
 
     @Override
+    public DataResult<Employer> getById(int id) {
+        return new SuccessDataResult<>
+                (this.employerDao.getById(id));
+    }
+
+    @Override
     public Result add(Employer employer) {
         if(getByEmail(employer.getEmail()).getData()!=null){
             return new ErrorResult("Email already exist");
@@ -39,6 +45,16 @@ public class EmployerManager implements EmployerService {
         }
         this.employerDao.save(employer);
         return new SuccessResult("Added");
+    }
+
+    @Override
+    public Result update(int id, String companyName, String website, String phone) {
+        Employer employer=employerDao.getById(id);
+        employer.setCompanyName(companyName);
+        employer.setWebsite(website);
+        employer.setPhone(phone);
+        employerDao.save(employer);
+        return new SuccessResult("Updated");
     }
 
     @Override
