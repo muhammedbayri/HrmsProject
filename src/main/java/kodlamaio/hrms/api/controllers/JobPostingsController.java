@@ -43,8 +43,8 @@ public class JobPostingsController {
     }
 
     @GetMapping("/getAllByActive")
-    DataResult<List<JobPosting>> getAllByActive(){
-        return this.jobPostingService.getAllByActive();
+    DataResult<List<JobPosting>> getAllByActive(@RequestParam int pageNo,@RequestParam(required = false,defaultValue = "10") int pageSize){
+        return this.jobPostingService.getAllByActive(pageNo,pageSize);
     }
 
     @GetMapping("/getByActiveAndCompanyName")
@@ -88,7 +88,7 @@ public class JobPostingsController {
     }
 
     @GetMapping("/getAllByInActive")
-    public DataResult<List<JobPosting>> getAllByInActive(){
-        return this.jobPostingService.getAllByInActive();
+    public DataResult<List<JobPosting>> getAllByInActive(@RequestParam int pageNo,@RequestParam(required = false,defaultValue = "10") int pageSize){
+        return this.jobPostingService.getAllByInActive(pageNo,pageSize);
     }
 }

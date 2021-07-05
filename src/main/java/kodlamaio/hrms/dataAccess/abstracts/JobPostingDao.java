@@ -1,13 +1,15 @@
 package kodlamaio.hrms.dataAccess.abstracts;
 
 import kodlamaio.hrms.entities.concretes.JobPosting;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
 public interface JobPostingDao extends JpaRepository<JobPosting,Integer> {
     JobPosting getById(int id);
-    List<JobPosting> getByisActive(boolean isActive);
+    Page<JobPosting> getByisActive(boolean isActive, Pageable pageable);
     List<JobPosting> getAllByCity_cityName(String cityName);
     List<JobPosting> getAllByWorkTime_workTime(String workTime);
     List<JobPosting> getAllByWorkType_workType(String workType);

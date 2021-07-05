@@ -95,9 +95,11 @@ public class JobPostingManager implements JobPostingService {
     }
 
     @Override
-    public DataResult<List<JobPosting>> getAllByActive() {
+    public DataResult<List<JobPosting>> getAllByActive(int pageNo,int pageSize) {
+        Pageable pageable= PageRequest.of(pageNo-1,pageSize);
         return new SuccessDataResult<>
-                (this.jobPostingDao.getByisActive(true));
+                (this.jobPostingDao.getByisActive(true,pageable).getContent(),
+                        this.jobPostingDao.getByisActive(true,pageable).getTotalPages() + "");
     }
     
 
@@ -108,8 +110,10 @@ public class JobPostingManager implements JobPostingService {
     }
 
     @Override
-    public DataResult<List<JobPosting>> getAllByInActive() {
+    public DataResult<List<JobPosting>> getAllByInActive(int pageNo,int pageSize) {
+        Pageable pageable= PageRequest.of(pageNo-1,pageSize);
         return new SuccessDataResult<>
-                (this.jobPostingDao.getByisActive(false));
+                (this.jobPostingDao.getByisActive(false,pageable).getContent(),
+                        this.jobPostingDao.getByisActive(false,pageable).getTotalPages()+"");
     }
 }

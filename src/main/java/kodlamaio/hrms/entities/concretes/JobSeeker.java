@@ -1,5 +1,6 @@
 package kodlamaio.hrms.entities.concretes;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -31,6 +32,11 @@ public class JobSeeker extends User{
     @Column(name = "date_of_birth")
     private Date birthDate;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "jobSeeker")
     private List<CurriculaVitae> curriculaVitaes;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "jobSeeker")
+    private List<FavoriteJobPosting> favoriteJobPostings;
 }

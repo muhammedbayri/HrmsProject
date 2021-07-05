@@ -1,11 +1,13 @@
 package kodlamaio.hrms.entities.concretes;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -55,6 +57,10 @@ public class JobPosting {
     @ManyToOne
     @JoinColumn(name = "work_types_id")
     private WorkType workType;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "jobPosting")
+    private List<FavoriteJobPosting> favoriteJobPostings;
 }
 
 

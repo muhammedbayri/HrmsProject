@@ -18,7 +18,7 @@ public interface JobPostingService {
     DataResult<List<JobPosting>> getAllByCityNameAndWorkTimeAndWorkType(String cityName,String workTime,String workType);
     Result add(JobPosting jobPosting);
     Result updateIsActive(int id,boolean isActive);
-    DataResult<List<JobPosting>> getAllByActive();
-    DataResult<List<JobPosting>> getAllByInActive();
+    DataResult<List<JobPosting>> getAllByActive(int pageNo,int pageSize);
+    DataResult<List<JobPosting>> getAllByInActive(int pageNo,int pageSize);
     DataResult<List<JobPosting>> getByActiveAndCompanyName(String companyName);
 }
