@@ -23,7 +23,7 @@ public class JobSeekerTechnology {
     @Column(name = "technology_name")
     private String technologyName;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "jobSeekerTechnology")
-    private List<CurriculaVitae> curriculaVitaes;
+    @ManyToOne()
+    @JoinColumn(name = "curricula_vitae_id")
+    private CurriculaVitae curriculaVitae;
 }

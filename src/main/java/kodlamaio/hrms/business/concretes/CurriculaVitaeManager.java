@@ -7,10 +7,8 @@ import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.CurriculaVitaeDao;
 import kodlamaio.hrms.dataAccess.abstracts.JobSeekerTechnologyDao;
-import kodlamaio.hrms.dataAccess.abstracts.SocialMediaDao;
 import kodlamaio.hrms.entities.concretes.CurriculaVitae;
 import kodlamaio.hrms.entities.concretes.JobSeekerTechnology;
-import kodlamaio.hrms.entities.concretes.SocialMedia;
 import kodlamaio.hrms.entities.dtos.CurriculaVitaeDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,13 +19,11 @@ import java.util.List;
 public class CurriculaVitaeManager implements CurriculaVitaeService {
 
     private final CurriculaVitaeDao curriculaVitaeDao;
-    private final SocialMediaDao socialMediaDao;
     private final JobSeekerTechnologyDao jobSeekerTechnologyDao;
 
     @Autowired
-    public CurriculaVitaeManager(CurriculaVitaeDao curriculaVitaeDao, SocialMediaDao socialMediaDao, JobSeekerTechnologyDao jobSeekerTechnologyDao) {
+    public CurriculaVitaeManager(CurriculaVitaeDao curriculaVitaeDao,JobSeekerTechnologyDao jobSeekerTechnologyDao) {
         this.curriculaVitaeDao = curriculaVitaeDao;
-        this.socialMediaDao = socialMediaDao;
         this.jobSeekerTechnologyDao = jobSeekerTechnologyDao;
     }
 
@@ -52,12 +48,11 @@ public class CurriculaVitaeManager implements CurriculaVitaeService {
     @Override
     public Result update(int id , String coverLetter,String githubUsername, String linkedinUsername, String technologyName) {
         CurriculaVitae curriculaVitae = curriculaVitaeDao.getById(id);
-        SocialMedia socialMedia=socialMediaDao.getByCurriculaVitaes_Id(id);
         JobSeekerTechnology jobSeekerTechnology=jobSeekerTechnologyDao.getById(id);
-        socialMedia.setGithubUsername(githubUsername);
-        socialMedia.setLinkedinUsername(linkedinUsername);
         jobSeekerTechnology.setTechnologyName(technologyName);
         curriculaVitae.setCoverLetter(coverLetter);
+        curriculaVitae.setGithubLink(githubUsername);
+        curriculaVitae.setLinkedinLink(linkedinUsername);
         curriculaVitaeDao.save(curriculaVitae);
         return new SuccessResult("Updated");
     }

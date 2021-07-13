@@ -23,21 +23,23 @@ public class CurriculaVitae {
     @Column(name = "cover_letter")
     private String coverLetter;
 
-    @ManyToOne()
-    @JoinColumn(name = "social_media_id")
-    private SocialMedia socialMedia;
+    @Column(name = "github_link")
+    private String githubLink;
+
+    @Column(name = "linkedin_link")
+    private String linkedinLink;
 
     @ManyToOne
     @JoinColumn(name = "candidate_id")
     private JobSeeker jobSeeker;
 
-    @ManyToOne
-    @JoinColumn(name = "candidate_image_id")
-    private JobSeekerImage jobSeekerImage;
+    @JsonIgnore
+    @OneToMany(mappedBy = "curriculaVitae")
+    private List<JobSeekerImage> jobSeekerImages;
 
-    @ManyToOne
-    @JoinColumn(name = "candidate_technology_id")
-    private JobSeekerTechnology jobSeekerTechnology;
+    @JsonIgnore
+    @OneToMany(mappedBy = "curriculaVitae")
+    private List<JobSeekerTechnology> jobSeekerTechnologies;
 
     @JsonIgnore
     @OneToMany(mappedBy = "curriculaVitae")

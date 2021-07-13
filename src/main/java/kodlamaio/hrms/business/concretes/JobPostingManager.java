@@ -114,6 +114,6 @@ public class JobPostingManager implements JobPostingService {
         Pageable pageable= PageRequest.of(pageNo-1,pageSize);
         return new SuccessDataResult<>
                 (this.jobPostingDao.getByisActive(false,pageable).getContent(),
-                        this.jobPostingDao.getByisActive(false,pageable).getTotalPages()+"");
+                        this.jobPostingDao.getByisActive(false,pageable).getTotalPages() + "");
     }
 }
